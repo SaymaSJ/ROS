@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="cobot">
+  <link name="world" />
+  <joint name="world_to_base" type="fixed">
+    <parent link="world" />
+    <child link="Body-Part1" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+  <link name="Body-Part1">
+    <inertial>
+      <origin xyz="-0.1798447952718103 0.022925426242011514 0.05601229960108434" rpy="0.0 0.0 0.0" />
+      <mass value="422.4347651248121" />
+      <inertia ixx="9.896088052743277" iyy="20.291431120539166" izz="17.448775357377386" ixy="-0.006594014792010938" iyz="-0.029766263287707595" ixz="1.6908908131017018" />
+    </inertial>
+    <visual name="Body-Part1_visual">
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="package://cobot_description/meshes/base_link.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="Body-Part1_collision">
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="package://cobot_description/meshes/base_link.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.006870688994763867 -0.005531219751294145 -0.0021944495914763707" rpy="0.0 -0.0 -8.552847072295024e-50" />
+      <mass value="1.283275730441828" />
+      <inertia ixx="0.0016574728754616963" iyy="0.0014840837775329518" izz="0.0012156550539494941" ixy="-0.0003961949817083974" iyz="0.00012666650220438674" ixz="-0.00015712887410335172" />
+    </inertial>
+    <visual name="base_link_visual">
+      <origin xyz="-0.0037797096782331606 0.0030422599118649883 0.001207660340673442" rpy="-0.2839560395694217 -0.5313221121934603 -2.1017094505019887" />
+      <geometry>
+        <mesh filename="package://cobot_description/meshes/link.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="base_link_collision">
+      <origin xyz="-0.0037797096782331606 0.0030422599118649883 0.001207660340673442" rpy="-0.2839560395694217 -0.5313221121934603 -2.1017094505019887" />
+      <geometry>
+        <mesh filename="package://cobot_description/meshes/link.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_mount_joint" type="fixed">
+    <parent link="Body-Part1" />
+    <child link="base_link" />
+    <origin xyz="-0.352567 -0.001200 0.289500" rpy="1.570796 0.000000 3.141593" />
+  </joint>
+  <link name="Base-joint">
+    <inertial>
+      <origin xyz="0.07906246720197074 -0.020958663407325134 0.05969701437848556" rpy="0.0 -4.276423536147512e-50 0.0" />
+      <mass value="2.718644742184274" />
+      <inertia ixx="0.005113774456599884" iyy="0.00790394349393253" izz="0.006619139994444193" ixy="0.0005415750689647954" iyz="0.0006762993227225063" ixz="-0.002148051938121843" />
+    </inertial>
+    <visual name="Base-joint_visual">
+      <origin xyz="0.026457947624332546 -0.008453644700357046 0.021295846268547792" rpy="2.4230895408976956 0.3915017115390629 0.9394914940446593" />
+      <geometry>
+        <mesh filename="package://cobot_description/meshes/Base-joint.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="Base-joint_collision">
+      <origin xyz="0.026457947624332546 -0.008453644700357046 0.021295846268547792" rpy="2.4230895408976956 0.3915017115390629 0.9394914940446593" />
+      <geometry>
+        <mesh filename="package://cobot_description/meshes/Base-joint.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint1_yaw" type="revolute">
+    <parent link="base_link" />
+    <child link="Base-joint" />
+    <origin xyz="0.008722 0.027994 -0.006346" rpy="1.570796 0.000000 0.000000" />
+    <axis xyz="-0.290729 0.211532 0.933130" />
+    <limit lower="-2.9671" upper="2.9671" effort="50" velocity="3.1416" />
+  </joint>
+  <link name="LINK-1">
+    <inertial>
+      <origin xyz="0.0036172018418770824 0.1791043745725443 0.00010547726635438959" rpy="0.0 0.0 0.0" />
+      <mass value="2.0935672304320274" />
+      <inertia ixx="0.060681709519814116" iyy="0.0023269856230591556" izz="0.06092470305114679" ixy="0.000806162174783704" iyz="8.745360326936368e-05" ixz="-2.2778526178124717e-06" />
+    </inertial>
+    <visual name="LINK-1_visual">
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="package://cobot_description/meshes/link_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="LINK-1_collision">
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="package://cobot_description/meshes/link_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="link1_fixed" type="fixed">
+    <parent link="Base-joint" />
+    <child link="LINK-1" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+  <link name="Link-2">
+    <inertial>
+      <origin xyz="-0.09286512506580102 -0.09774880102912561 -0.10480852715020213" rpy="0.0 -0.0 0.0" />
+      <mass value="2.7611722846701063" />
+      <inertia ixx="0.0370528965880821" iyy="0.03248509756838082" izz="0.016110620406984744" ixy="-0.006767614595994515" iyz="-0.015580764800668282" ixz="-0.011143845061937888" />
+    </inertial>
+    <visual name="Link-2_visual">
+      <origin xyz="-0.04668970893683678 -0.032296287106535856 0.0052014742195400036" rpy="-1.8480802237151115 0.5770362291659613 0.47270599385218454" />
+      <geometry>
+        <mesh filename="package://cobot_description/meshes/link_2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="Link-2_collision">
+      <origin xyz="-0.04668970893683678 -0.032296287106535856 0.0052014742195400036" rpy="-1.8480802237151115 0.5770362291659613 0.47270599385218454" />
+      <geometry>
+        <mesh filename="package://cobot_description/meshes/link_2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint2_pitch" type="revolute">
+    <parent link="LINK-1" />
+    <child link="Link-2" />
+    <origin xyz="-0.044285 0.012866 0.009074" rpy="3.141593 0.000000 0.000000" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.9671" upper="2.9671" effort="50" velocity="3.1416" />
+  </joint>
+  <joint name="joint3_pitch" type="revolute">
+    <parent link="Link-2" />
+    <child link="EE-Part3" />
+    <origin xyz="0.006880 -0.000910 0.034880" rpy="0.000000 0.000000 0.000000" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.9671" upper="2.9671" effort="50" velocity="3.1416" />
+  </joint>
+  <link name="EE-Part3">
+    <inertial>
+      <origin xyz="-0.008134808669770592 -0.011526649620466003 -0.019172604721381284" rpy="3.0814879110195774e-33 -0.0 0.0" />
+      <mass value="0.11471086514890157" />
+      <inertia ixx="6.303422501133249e-05" iyy="7.814267096614008e-05" izz="5.780737151453441e-05" ixy="-1.8413085054375108e-05" iyz="-3.0109795899346738e-06" ixz="9.786132655719215e-06" />
+    </inertial>
+    <visual name="EE-Part3_visual">
+      <origin xyz="-1.7061099555348847e-09 -1.0803324812513892e-09 2.336619857601363e-09" rpy="-2.7435087131180795 0.9374820933505307 -2.188020878043835" />
+      <geometry>
+        <mesh filename="package://cobot_description/meshes/EE-Part3.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision name="EE-Part3_collision">
+      <origin xyz="-1.7061099555348847e-09 -1.0803324812513892e-09 2.336619857601363e-09" rpy="-2.7435087131180795 0.9374820933505307 -2.188020878043835" />
+      <geometry>
+        <mesh filename="package://cobot_description/meshes/EE-Part3.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+</robot>
